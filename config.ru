@@ -1,5 +1,7 @@
-class HelloWorld
-    def call(env)
-        [200, {"Content-Type" => "text/plain"}, ["Hello world!"]]
-    end
-end
+require 'rubygems'
+require 'vendor/sinatra/lib/sinatra.rb'
+
+require File.expand_path '../routes.rb', __FILE__
+
+set :environment, :development
+run Sinatra::Application
