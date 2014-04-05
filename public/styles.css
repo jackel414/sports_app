@@ -1,3 +1,22 @@
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display+SC);
+
 body {
-	background-color: #7A7A8A;
+	background-color: #464368;
+	color: white;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.header {
+	font-family: 'Playfair Display SC', serif;	
+	font-size: 20px;
+}
+
+.overall_status {
+	font-size: 50px;
+	margin-top: 50px;
+}
+
+p {
+	
 }

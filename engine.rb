@@ -10,7 +10,7 @@ red_sox_outcome = nil
 num_games = 0
 
 mlb_scores.scan(mlb_scores).each do |match| 
-    scores = match.scan(/((?<==)([\^][[:upper:]]|[[:upper:]][[:lower:]])[^\(&]{1,})/)
+    scores = match.scan(/(([\^][[:upper:]]|[[:upper:]][[:lower:]])[^\(&]{1,})/)
     scores.each do |score|
       if score[0] =~ /Boston/
         red_sox_game = score[0]
@@ -21,7 +21,8 @@ end
 
 if red_sox_game
   game_position = mlb_scores =~ /Boston/
-  game_status = mlb_scores[game_position..game_position+50].match(/(?<=\()[^\)]{1,}/).to_s
+  game_status = mlb_scores[game_position..game_position+50].match(/[\(][^\)]{1,}/).to_s
+  game_status.gsub!(/\(/, '')
   if game_status.match(/TOP|BOT/)
     message = 'The game is in progress.'
     red_sox_outcome = 'pending'
