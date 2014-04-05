@@ -19,10 +19,9 @@ mlb_scores.scan(mlb_scores).each do |match|
     end
 end
 
-game_position = mlb_scores =~ /#{red_sox_game}/
-game_status = mlb_scores[game_position..game_position+50].match(/(?<=\()[^\)]{1,}/).to_s
-
 if red_sox_game
+  game_position = mlb_scores =~ /Boston/
+  game_status = mlb_scores[game_position..game_position+50].match(/(?<=\()[^\)]{1,}/).to_s
   if game_status.match(/TOP|BOT/)
     message = 'The game is in progress.'
     red_sox_outcome = 'pending'
@@ -50,5 +49,4 @@ else
   puts "#{message}"
 end
 
-
-#puts mlb_scores
+# puts mlb_scores
