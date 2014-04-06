@@ -27,7 +27,7 @@ if red_sox_game
   game_status = mlb_scores[game_position..game_position+50].match(/[\(][^\)]{1,}/).to_s
   game_status.gsub!(/\(/, '')
   if game_status.match(/TOP|BOT/)
-    $red_sox_message = 'The game is in progress.'
+    $red_sox_message = "The Red Sox game is in progress: #{red_sox_game} - #{game_status}"
     $red_sox_outcome = 'pending'
   elsif game_status.match(/FINAL/)
     if red_sox_game.match(/\^Boston/)
@@ -38,18 +38,12 @@ if red_sox_game
       $red_sox_outcome = 'L'
     end
   else
-    $red_sox_message = 'The Red Sox game hasn\'t started yet.'
-    $red_sox_outcome = 'later'
+    $red_sox_message = "The Red Sox play at #{game_status}."
+    $red_sox_outcome = 'pending'
   end
 else
   $red_sox_message = 'The Red Sox don\'t play today.'
-end
-
-if $red_sox_outcome == 'later'
-  $red_sox_message = "The Red Sox play at #{game_status}."
-elsif $red_sox_outcome == 'pending'
-  $red_sox_message = "#{message} #{red_sox_game} - #{game_status}"
-else
+  $red_sox_outcome = 'N/A'
 end
 
 # puts mlb_scores

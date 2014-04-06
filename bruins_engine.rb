@@ -25,8 +25,8 @@ if bruins_game
   game_status = nhl_scores[game_position..game_position+50].match(/[\(][^\)]{1,}/).to_s
   game_status.gsub!(/\(/, '')
   if game_status.match(/PM|AM/)
-    $bruins_message = 'The Bruins game hasn\'t started yet.'
-    $bruins_outcome = 'later'
+    $bruins_message = "The Bruins play at #{game_status}."
+    $bruins_outcome = 'pending'
   elsif game_status.match(/FINAL/)
     if bruins_game.match(/\^Boston/)
       $bruins_message = 'The Bruins won!'
@@ -36,18 +36,12 @@ if bruins_game
       $bruins_outcome = 'L'
     end
   else
-    $bruins_message = 'The game is in progress.'
+    $bruins_message = "The Bruins game is in progress. #{bruins_game} - #{game_status}"
     $bruins_outcome = 'pending'
   end
 else
   $bruins_message = 'The Bruins don\'t play today.'
-end
-
-if $bruins_outcome == 'later'
-  $bruins_message = "The Bruins play at #{game_status}."
-elsif $bruins_outcome == 'pending'
-  $bruins_message = "#{message} #{bruins_game} - #{game_status}"
-else
+  $bruins_outcome = 'N/A'
 end
 
 #puts nhl_scores
