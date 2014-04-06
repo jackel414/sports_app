@@ -42,7 +42,7 @@ if red_sox_game
     $red_sox_outcome = 'pending'
   end
 else
-  $red_sox_message = 'The Red Sox don\'t play today.'
+  $red_sox_message = 'No Red Sox game.'
   $red_sox_outcome = 'N/A'
 end
 

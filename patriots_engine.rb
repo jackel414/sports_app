@@ -40,7 +40,7 @@ if $patriots_game
     $patriots_outcome = 'pending'
   end
 else
-  $patriots_message = 'The Patriots don\'t play today.'
+  $patriots_message = 'No Patriots game.'
   $patriots_outcome = 'N/A'
 end
 
