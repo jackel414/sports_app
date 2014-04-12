@@ -17,6 +17,24 @@ body {
 	margin-top: 50px;
 }
 
-p {
+.team_bubble {
+	display: inline-block;
+	height: 100px;
+	width: 100px;
+}
+
+.red_sox {
+	/*background-image: url('redsox.gif');*/
+}
+
+.bruins {
+	
+}
+
+.celtis {
+	
+}
+
+.patriots {
 	
 }

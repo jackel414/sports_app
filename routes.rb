@@ -29,7 +29,7 @@ end
 if total_games == 0
   overall_status = 'No Games Today'
 elsif pending == total_games
-  overall_status == 'Nothing to Report Yet'
+  overall_status = 'Nothing to Report Yet'
 elsif pending == 0
   if total_games == 4
     if wins == 4
@@ -46,7 +46,7 @@ elsif pending == 0
   elsif wins == total_games
     overall_status = 'Great day!'
   elsif wins == 0
-    overall_status = 'Bad day to be a Boston fan'
+    overall_status = 'Not good'
   else
     if wins > losses
       overall_status = 'Almost Perfect'
@@ -66,12 +66,18 @@ else
   end
 end
 
-get '/' do
+post '/' do
   @title = 'Home'
   @red_sox_update = $red_sox_message
   @bruins_update = $bruins_message
   @celtics_update = $celtics_message
   @patriots_update = $patriots_message
   @overall_status = overall_status
+  @pending = pending
+  @total_games = total_games
 	erb :index
+end
+
+get '/' do
+  redirect 'http://www.zacharymays.com'
 end

@@ -1,7 +1,18 @@
 <p class="header">How did we do?</p>
 
 <p class="overall_status"><%= @overall_status %></p>
-<p><%= @red_sox_update %></p>
-<p><%= @bruins_update %></p>
-<p><%= @celtics_update %></p>
-<p><%= @patriots_update %></p>
+<div class="team_bubble red_sox">
+	<p><%= @red_sox_update %></p>
+</div>
+
+<div class="team_bubble bruins">
+	<p><%= @bruins_update %></p>
+</div>
+
+<div class="team_bubble celtics">
+	<p><%= @celtics_update %></p>
+</div>
+
+<div class="team_bubble patriots">
+	<p><%= @patriots_update %></p>
+</div>
