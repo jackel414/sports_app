@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Playfair+Display+SC);
+@import url(http://fonts.googleapis.com/css?family=Allura|Playfair+Display+SC);
 
 body {
 	background-color: #464368;
@@ -8,33 +8,43 @@ body {
 }
 
 .header {
-	font-family: 'Playfair Display SC', serif;	
-	font-size: 20px;
+  font-family: 'Allura', cursive;
+  font-size: 35px;
 }
 
 .overall_status {
+	font-family: 'Playfair Display SC', serif;	
 	font-size: 50px;
 	margin-top: 50px;
+  padding-bottom: 40px;
+}
+
+.team_square {
+  display: inline-block;
+  width: 250px;
+  height: 200px;
 }
 
 .team_bubble {
-	display: inline-block;
 	height: 100px;
 	width: 100px;
+  background-color: white;
+  border-radius: 50%;
+  margin: auto;
 }
 
 .red_sox {
-	/*background-image: url('redsox.gif');*/
+	background-image: url('redsox.png');
 }
 
 .bruins {
-	
+	background-image: url('bruins.png');	
 }
 
-.celtis {
-	
+.celtics {
+	background-image: url('celtics.png');
 }
 
 .patriots {
-	
+	background-image: url('patriots.png');
 }

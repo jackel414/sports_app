@@ -66,7 +66,7 @@ else
   end
 end
 
-post '/' do
+get '/' do
   @title = 'Home'
   @red_sox_update = $red_sox_message
   @bruins_update = $bruins_message
@@ -78,6 +78,6 @@ post '/' do
 	erb :index
 end
 
-get '/' do
+post '/' do
   redirect 'http://www.zacharymays.com'
 end
