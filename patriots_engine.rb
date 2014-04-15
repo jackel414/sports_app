@@ -36,7 +36,7 @@ if $patriots_game
       $patriots_outcome = 'L'
     end
   else
-    $patriots_message = "The Patriots is in progress: #{patriots_game} - #{game_status}"
+    $patriots_message = "The Patriots is in progress: #{$patriots_game} - #{game_status}"
     $patriots_outcome = 'pending'
   end
 else

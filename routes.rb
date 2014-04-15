@@ -77,7 +77,3 @@ get '/' do
   @total_games = total_games
 	erb :index
 end
-
-post '/' do
-  redirect 'http://www.zacharymays.com'
-end
