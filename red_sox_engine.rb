@@ -5,6 +5,7 @@ require 'open-uri'
 
 def red_sox_score
   mlb_url = 'http://sports.espn.go.com/mlb/bottomline/scores'
+  #mlb_url = 'test_scores.txt'
 
   mlb_scores = open(mlb_url) { |io| data = io.read}
   mlb_scores.gsub!(/%20/, ' ')

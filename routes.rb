@@ -8,7 +8,7 @@ require 'patriots_engine'
 
 
 get '/' do
-  @title = 'Home'
+  @title = 'How\'d Our Teams Do?'
   celtics_score
   red_sox_score
   patriots_score

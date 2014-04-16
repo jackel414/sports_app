@@ -33,6 +33,15 @@ body {
   margin: auto;
 }
 
+.circle {
+  background-image: url('black_cover.png');
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  opacity: .7;
+  position: fixed;
+}
+
 .red_sox {
 	background-image: url('redsox.png');
 }
