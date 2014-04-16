@@ -28,7 +28,7 @@ def red_sox_score
     game_status = mlb_scores[game_position..game_position+50].match(/[\(][^\)]{1,}/).to_s
     game_status.gsub!(/\(/, '')
     if game_status.match(/TOP|BOT/)
-      $red_sox_message = "#{$red_sox_game} - #{game_status}"
+      $red_sox_message = "#{red_sox_game} - #{game_status}"
       $red_sox_outcome = 'pending'
     elsif game_status.match(/FINAL/)
       if red_sox_game.match(/\^Boston/)

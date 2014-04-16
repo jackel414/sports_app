@@ -37,7 +37,7 @@ def bruins_score
         $bruins_outcome = 'L'
       end
     else
-      $bruins_message = "#{$bruins_game} - #{game_status}"
+      $bruins_message = "#{bruins_game} - #{game_status}"
       $bruins_outcome = 'pending'
     end
   else

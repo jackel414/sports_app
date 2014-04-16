@@ -8,7 +8,7 @@ def patriots_score
 
   nfl_scores = open(nfl_url) { |io| data = io.read}
   nfl_scores.gsub!(/%20/, ' ')
-  $patriots_game = nil
+  patriots_game = nil
   $patriots_message = nil
   $patriots_outcome = nil
 
@@ -16,12 +16,12 @@ def patriots_score
       scores = match.scan(/(([\^][[:upper:]]|[[:upper:]][[:lower:]])[^\(&]{1,})/)
       scores.each do |score|
         if score[0] =~ /New England/
-          $patriots_game = score[0]
+          patriots_game = score[0]
         end
       end
   end
 
-  if $patriots_game
+  if patriots_game
     game_position = nfl_scores =~ /New England/
     game_status = nfl_scores[game_position..game_position+50].match(/[\(][^\)]{1,}/).to_s
     game_status.gsub!(/\(/, '')
@@ -29,7 +29,7 @@ def patriots_score
       $patriots_message = "The Patriots play at #{game_status}."
       $patriots_outcome = 'pending'
     elsif game_status.match(/FINAL/)
-      if $patriots_game.match(/\^New England/)
+      if patriots_game.match(/\^New England/)
         $patriots_message = 'The Patriots won!'
         $patriots_outcome = 'W'
       else
@@ -37,7 +37,7 @@ def patriots_score
         $patriots_outcome = 'L'
       end
     else
-      $patriots_message = "#{$patriots_game} - #{game_status}"
+      $patriots_message = "#{patriots_game} - #{game_status}"
       $patriots_outcome = 'pending'
     end
   else
