@@ -1,39 +1,37 @@
 require 'rubygems'
 require 'sinatra'
 
-require 'red_sox_engine'
-require 'bruins_engine'
-require 'celtics_engine'
-require 'patriots_engine'
+require 'engine'
 
 
 get '/' do
   @title = 'How\'d Our Teams Do?'
-  celtics_score
-  red_sox_score
-  patriots_score
-  bruins_score
   
-  full_scoreboard = [$red_sox_outcome, $bruins_outcome, $celtics_outcome, $patriots_outcome]
   total_games = 0
   wins = 0
   losses = 0
   pending = 0
   overall_status = nil
-
-  full_scoreboard.each do |score|
-    if score != 'N/A'
+  
+  teams = [['Boston', 'Red Sox', 'mlb'], ['Boston', 'Bruins', 'nhl'], ['Boston', 'Celtics', 'nba'], ['New Engalnd', 'Patriots', 'nfl']]
+  
+  @team_updates = []
+  teams.each do |(city, team, sport)|
+    team_update = team_status(city, team, sport)
+    team_no_space = team.gsub(/\s/, '_')
+    @team_updates << {:team_name => team_no_space, :update => team_update[0], :outcome => team_update[1]}
+    if team_update[1] != 'N/A'
       total_games += 1
-      if score == 'W'
+      if team_update[1] == 'W'
         wins += 1
-      elsif score == 'L'
+      elsif team_update[1] == 'L'
         losses += 1
       else
         pending += 1
       end
     end
   end
-
+  
   if total_games == 0
     overall_status = 'No Games Today'
   elsif pending == total_games
@@ -74,12 +72,7 @@ get '/' do
     end
   end
   
-  @red_sox_update = $red_sox_message
-  @bruins_update = $bruins_message
-  @celtics_update = $celtics_message
-  @patriots_update = $patriots_message
-  @overall_status = overall_status
-  @pending = pending
-  @total_games = total_games
+  @overall_status = overall_status  
+  
 	erb :index
 end

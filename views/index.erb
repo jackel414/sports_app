@@ -2,38 +2,13 @@
 
 <p class="overall_status"><%= @overall_status %></p>
 
-<div class="team_square">
-  <div class="team_bubble red_sox">
-    <% if @red_sox_update == 'No Red Sox game.' %>
-      <div class="circle"></div>
-    <% end %>
+<% @team_updates.each do |update| %>
+  <div class="team_square">
+    <div class="team_bubble <%= update[:team_name] %>">
+      <% if update[:outcome] == 'N/A' %>
+        <div class="circle"></div>
+      <% end %>
+    </div>
+    <p><%= update[:update] %></p>
   </div>
-  <p><%= @red_sox_update %></p>
-</div>
-
-<div class="team_square">
-  <div class="team_bubble bruins">
-    <% if @bruins_update == 'No Bruins game.' %>
-      <div class="circle"></div>
-    <% end %>
-  </div>
-  <p><%= @bruins_update %></p>
-</div>
-
-<div class="team_square">
-  <div class="team_bubble celtics">
-    <% if @celtics_update == 'No Celtics game.' %>
-      <div class="circle"></div>
-    <% end %>
-  </div>
-  <p><%= @celtics_update %></p>
-</div>
-
-<div class="team_square">
-  <div class="team_bubble patriots">
-    <% if @patriots_update == 'No Patriots game.' %>
-      <div class="circle"></div>
-    <% end %>
-  </div>
-  <p><%= @patriots_update %></p>
-</div>
+<% end %>
