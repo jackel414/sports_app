@@ -58,3 +58,7 @@ body {
 .Patriots {
 	background-image: url('patriots.png');
 }
+
+#social_share {
+  margin-top: 50px;
+}
