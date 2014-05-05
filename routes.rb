@@ -50,7 +50,7 @@ get '/' do
         overall_status = 'There are bad days, then there is today...'
       end
     elsif wins == total_games
-      overall_status = 'Great day!'
+      overall_status = 'Great!'
     elsif wins == 0
       overall_status = 'Not good'
     else
