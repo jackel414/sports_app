@@ -5,6 +5,7 @@ body {
 	color: white;
 	text-align: center;
 	margin-top: 20px;
+  width: 100%;
 }
 
 .header {
@@ -39,7 +40,7 @@ body {
   width: 100px;
   border-radius: 50%;
   opacity: .7;
-  position: fixed;
+  position: relative;
 }
 
 .Red_Sox {
