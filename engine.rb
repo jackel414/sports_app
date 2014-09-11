@@ -1,4 +1,7 @@
 require 'open-uri'
+require 'net/http'
+require 'rexml/document'
+include REXML
 
 def team_status(city, team, sport)
 
@@ -47,4 +50,43 @@ def team_status(city, team, sport)
   team_update << team_outcome
 end
 
-#puts team_status('Bruins', 'Boston', 'nhl')
+def patriots_status()
+  url = 'http://www.nfl.com/liveupdate/scorestrip/ss.xml'
+
+  # get the XML data as a string
+  xml_data = Net::HTTP.get_response(URI.parse(url)).body
+
+  # extract event information
+  xmldoc = REXML::Document.new(xml_data)
+
+  @time = Time.new
+  @todays_date = @time.strftime("%Y%m%d")
+  my_game = nil
+  team_message = nil
+  team_outcome = nil
+  team_update = []
+
+  xmldoc.elements.each("ss/gms/g") do |e| 
+    if e.attributes["h"] == "NE" || e.attributes["v"] == "NE"
+      my_game = true
+      game_date = e.attributes["eid"].to_s[0...-2]
+      if @game_date === @todays_date
+        if e.attributes["q"] === "P"
+          team_message = "The Patriots play at " + e.attributes["t"] + "."
+          team_outcome = 'pending'
+        elsif e.attributes["f"] === "F"
+          #put code to figure out who won.
+        else
+          #put code to display current score
+        end
+      else
+        team_message = "No Patriots game."
+      end
+      break
+    else
+      my_game = false
+      team_message = "No Patriots game."
+    end
+  end
+end
+

@@ -13,7 +13,7 @@ get '/' do
   pending = 0
   overall_status = nil
   
-  teams = [['Boston', 'Red Sox', 'mlb'], ['Boston', 'Bruins', 'nhl'], ['Boston', 'Celtics', 'nba'], ['New England', 'Patriots', 'nfl']]
+  teams = [['Boston', 'Red Sox', 'mlb'], ['Boston', 'Bruins', 'nhl'], ['Boston', 'Celtics', 'nba']]
   
   @team_updates = []
   teams.each do |(city, team, sport)|
