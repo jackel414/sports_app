@@ -61,32 +61,49 @@ def patriots_status()
 
   @time = Time.new
   @todays_date = @time.strftime("%Y%m%d")
-  my_game = nil
   team_message = nil
   team_outcome = nil
   team_update = []
 
   xmldoc.elements.each("ss/gms/g") do |e| 
-    if e.attributes["h"] == "NE" || e.attributes["v"] == "NE"
-      my_game = true
-      game_date = e.attributes["eid"].to_s[0...-2]
+    if e.attributes['h'] == 'NE' || e.attributes['v'] == 'NE'
+      game_date = e.attributes['eid'].to_s[0...-2]
+      home_score = e.attributes['hs']
+      visitor_score = e.attributes['vs']
       if @game_date === @todays_date
-        if e.attributes["q"] === "P"
-          team_message = "The Patriots play at " + e.attributes["t"] + "."
+        if e.attributes['q'] === 'P'
+          team_message = 'The Patriots play at ' + e.attributes['t'] + '.'
           team_outcome = 'pending'
-        elsif e.attributes["f"] === "F"
-          #put code to figure out who won.
+        elsif e.attributes['f'] === 'F'
+          if e.attributes['h'] === 'NE'
+            if home_score > visitor_score
+              team_message = 'The Patriots won!'
+              team_outcome = 'W'
+            else
+              team_message = 'The Patriots lost.'
+              team_outcome = 'L'
+            end
+          end
         else
-          #put code to display current score
+          if e.attributes['h'] === 'NE'
+            visiting_team = e.attributes['v']
+            team_message = "In Progress - NE #{home_score}  #{visiting_team} #{visitor_score}."
+          else
+            home_team = e.attributes['h']
+            team_message = "In Progress - NE #{visitor_score}  #{home_team} #{home_score}."
+          end
         end
       else
-        team_message = "No Patriots game."
+        team_message = 'No Patriots game.'
+        team_outcome = 'N/A'
       end
       break
     else
-      my_game = false
-      team_message = "No Patriots game."
+      team_message = 'No Patriots game.'
+      team_outcome = 'N/A'
     end
   end
+  team_update << team_message
+  team_update << team_outcome
 end
 

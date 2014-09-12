@@ -31,6 +31,9 @@ get '/' do
       end
     end
   end
+
+  pats_score = patriots_status()
+  @team_updates << {:team_name => 'Patriots', :update => pats_score[0], :outcome => pats_score[1]}
   
   if total_games == 0
     overall_status = 'No Games Today'
