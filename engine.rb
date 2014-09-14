@@ -59,8 +59,8 @@ def patriots_status()
   # extract event information
   xmldoc = REXML::Document.new(xml_data)
 
-  @time = Time.new
-  @todays_date = @time.strftime("%Y%m%d")
+  time = Time.new
+  todays_date = time.strftime("%Y%m%d")
   team_message = nil
   team_outcome = nil
   team_update = []
@@ -70,9 +70,9 @@ def patriots_status()
       game_date = e.attributes['eid'].to_s[0...-2]
       home_score = e.attributes['hs']
       visitor_score = e.attributes['vs']
-      if @game_date === @todays_date
+      if game_date === todays_date
         if e.attributes['q'] === 'P'
-          team_message = 'The Patriots play at ' + e.attributes['t'] + '.'
+          team_message = 'The Patriots play at ' + e.attributes['t'] + 'pm.'
           team_outcome = 'pending'
         elsif e.attributes['f'] === 'F'
           if e.attributes['h'] === 'NE'
