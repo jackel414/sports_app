@@ -35,7 +35,7 @@ get '/' do
   pats_score = patriots_status()
   @team_updates << {:team_name => 'Patriots', :update => pats_score[0], :outcome => pats_score[1]}
 
-    if pats_score[1] != 'N/A'
+  if pats_score[1] != 'N/A'
     total_games += 1
     if pats_score[1] == 'W'
       wins += 1

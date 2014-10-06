@@ -88,9 +88,11 @@ def patriots_status()
           if e.attributes['h'] === 'NE'
             visiting_team = e.attributes['v']
             team_message = "In Progress - NE #{home_score}  #{visiting_team} #{visitor_score}."
+            team_outcome = 'pending'
           else
             home_team = e.attributes['h']
             team_message = "In Progress - NE #{visitor_score}  #{home_team} #{home_score}."
+            team_outcome = 'pending'
           end
         end
       else
