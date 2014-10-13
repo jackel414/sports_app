@@ -74,7 +74,7 @@ def patriots_status()
         if e.attributes['q'] === 'P'
           team_message = 'The Patriots play at ' + e.attributes['t'] + 'pm.'
           team_outcome = 'pending'
-        elsif e.attributes['f'] === 'F'
+        elsif e.attributes['q'] === 'F'
           if e.attributes['h'] === 'NE'
             if home_score > visitor_score
               team_message = 'The Patriots won!'
@@ -82,6 +82,14 @@ def patriots_status()
             else
               team_message = 'The Patriots lost.'
               team_outcome = 'L'
+            end
+          else
+            if home_score > visitor_score
+              team_message = 'The Patriots lost.'
+              team_outcome = 'L'
+            else
+              team_message = 'The Patriots won!'
+              team_outcome = 'W'
             end
           end
         else
