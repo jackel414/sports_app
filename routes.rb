@@ -47,7 +47,7 @@ get '/' do
   end
   
   if total_games == 0
-    overall_status = 'No Games Today'
+    overall_status = 'No Games'
   elsif pending == total_games
     overall_status = 'Nothing to Report Yet'
   elsif pending == 0
